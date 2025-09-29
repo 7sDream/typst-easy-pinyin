@@ -44,13 +44,13 @@
         inset: 0pt,
         stroke: none,
         row-gutter: gutter,
-        text(1em * scale, pinyin(ruby)), 
+        text(1em * scale, pinyin(ruby)),
         doc,
       ),
     ));
   }
 
-  let extract-text(thing) = if type(thing) == "string" { thing } else { thing.text };
+  let extract-text(thing) = if type(thing) == str { thing } else { thing.text };
   let chars = extract-text(doc).split(delimiter);
   let aboves = extract-text(ruby).split(delimiter);
 
@@ -84,7 +84,7 @@
   align: (center + horizon, center, center, center),
   [arguments], [per char], [per word], [all in one],
   ..arguments.map(((scale, spacing)) => (
-    text(size: 0.7em)[#scale,#repr(spacing)], 
+    text(size: 0.7em)[#scale,#repr(spacing)],
     ..example(zhuyin.with(scale: scale, spacing: spacing))
   )).flatten(),
 )
